@@ -2,6 +2,8 @@ package com.hash;
 
 public class CustomHash {
 
+    static final Par DELETED = new Par(-1, -1);
+
     static class Par {
         // value: valor do array original
         // posic: posição (índice) desse valor no array
@@ -56,6 +58,18 @@ public class CustomHash {
                 break;
         }
         throw new IllegalArgumentException("Key not found: " + value);
+    }
+
+    public void printTable() {
+        for (int i = 0; i < table.length; i++) {
+            if (table[i] == null) {
+                System.out.println(i + ": null");
+            } else if (table[i] == DELETED) {
+                System.out.println(i + ": <DELETED>");
+            } else {
+                System.out.println(i + ": (" + table[i].value + ", pos=" + table[i].posic + ")");
+            }
+        }
     }
 
 }
